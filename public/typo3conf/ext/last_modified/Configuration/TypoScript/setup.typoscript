@@ -1,0 +1,21 @@
+@import 'EXT:fluid_styled_content/Configuration/TypoScript/setup.typoscript'
+
+page = PAGE
+page.10 = FLUIDTEMPLATE
+page.10 {
+    extbase.controllerExtensionName = last_modified
+
+    templateRootPaths.10 = EXT:last_modified/Resources/Private/Templates
+    partialRootPaths.10 = EXT:last_modified/Resources/Private/Partials
+    layoutRootPaths.10 = EXT:last_modified/Resources/Private/Layouts
+
+    templateName = Page/Demo
+
+    variables {
+        content < styles.content.get
+        content.select.where = colPos=0
+    }
+}
+
+lib.lastModified = TEXT
+lib.lastModified.data = register:SYS_LASTCHANGED

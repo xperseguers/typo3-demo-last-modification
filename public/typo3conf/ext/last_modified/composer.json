@@ -1,0 +1,31 @@
+{
+  "name": "causal/last-modified",
+  "type": "typo3-cms-extension",
+  "description": "Last Modified",
+  "keywords": [
+    "TYPO3 CMS"
+  ],
+  "authors": [
+    {
+      "name": "Xavier Perseguers",
+      "email": "xavier@causal.ch",
+      "homepage": "https://www.causal.ch",
+      "role": "Developer"
+    }
+  ],
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": ">= 7.4.0, <= 8.1.99",
+    "typo3/cms-core": "^10 || ^11"
+  },
+  "autoload": {
+    "psr-4": {
+      "Causal\\LastModified\\": "Classes/"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "last_modified"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<a href="/">HOME</a>
+
+<h1>LAYOUT [begin]</h1>
+
+<div style="border: 1px solid black; padding: 1em">
+    <f:render section="main"/>
+
+    <small><em>User-expected "last modification": 03.01.2050 14:30:00</em></small>
+</div>
+
+<p>
+    Last modified (TypoScript):
+    <strong>
+        <f:format.date format="d.m.Y H:i:s"><f:cObject typoscriptObjectPath="lib.lastModified"/></f:format.date>
+    </strong>
+</p>
+<p>
+    Last modified (PSR-15 Middleware post-processing):
+    <strong>
+        <!--###EXT:last_modified:{"format":"d.m.Y H:i:s"}###-->
+    </strong>
+</p>
+
+<h1>LAYOUT [end]</h1>
+
+</html>

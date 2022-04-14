@@ -1,0 +1,15 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<h2>Records</h2>
+
+This plugin is cached and does inform TYPO3 about the date/time of the listed records.
+
+<ul>
+    <f:for each="{records}" as="record">
+        <li>{record.title} - <f:format.date format="d.m.Y H:i">{record.tstamp}</f:format.date></li>
+    </f:for>
+</ul>
+
+</html>
