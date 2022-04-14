@@ -12,8 +12,8 @@ This is a typical use case, but unfortunately it is not that easy to achieve:
   certainly not interested in knowing that the page structure has been changed
   years ago... You'd like to get the "last modified on" as when the most recent
   news or business record listed on that page has been last updated;
-- it is expected to work both for pages with some "uncached plugin" (easy) as well
-  as pages which may get fully generated and stay cached.
+- it is expected to work both for pages with some "cached plugin" (easy) as well
+  as pages that contain uncached plugins (trickier).
 
 ## Installation
 
