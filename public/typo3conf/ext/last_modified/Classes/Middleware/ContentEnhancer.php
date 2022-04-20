@@ -10,6 +10,8 @@ use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use TYPO3\CMS\Core\Http\SelfEmittableStreamInterface;
 use TYPO3\CMS\Core\Http\Stream;
+use TYPO3\CMS\Core\Information\Typo3Version;
+use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 class ContentEnhancer implements MiddlewareInterface
 {
@@ -25,7 +27,13 @@ class ContentEnhancer implements MiddlewareInterface
                     $config = json_decode($matches[1], true) ?? [];
                     $format = $config['format'] ?? ($GLOBALS['TYPO3_CONF_VARS']['SYS']['ddmmyy'] ?: 'Y-m-d');
 
-                    $sysLastChanged = $request->getAttribute('frontend.controller')->register['SYS_LASTCHANGED'];
+                    /** @var TypoScriptFrontendController $typoScriptFrontendController */
+                    if (version_compare((new Typo3Version())->getBranch(), '11.5', '<')) {
+                        $typoScriptFrontendController = $GLOBALS['TSFE'];
+                    } else {
+                        $typoScriptFrontendController = $request->getAttribute('frontend.controller');
+                    }
+                    $sysLastChanged = $typoScriptFrontendController->register['SYS_LASTCHANGED'];
                     if (str_contains($format, '%')) {
                         // @todo Replace deprecated strftime in php 8.1. Suppress warning in v11.
                         $lastModification = @strftime($format, $sysLastChanged);
